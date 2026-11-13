@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Waste2Value: project dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f1;--panel:#ffffff;--ink:#14201d;--muted:#52615c;--line:#cfdad6;--green:#0f5b4a;--green2:#3f9b7f;--amber:#c98a00;--red:#b3402f;--soft:#dcebe5;--grey:#8a9894;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1816;--panel:#16231f;--ink:#e7f0ec;--muted:#9fb3ac;--line:#2b3d37;--green:#58c0a0;--green2:#2f8a70;--amber:#e3ac2c;--red:#e5806f;--soft:#1d332c;--grey:#6d807a}}
+:root[data-theme="dark"]{--bg:#0e1816;--panel:#16231f;--ink:#e7f0ec;--muted:#9fb3ac;--line:#2b3d37;--green:#58c0a0;--green2:#2f8a70;--amber:#e3ac2c;--red:#e5806f;--soft:#1d332c;--grey:#6d807a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;line-height:1.12;margin:0}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{padding:48px 0 28px}
+h1{font-size:clamp(34px,6.2vw,56px);font-weight:700;letter-spacing:-.02em;max-width:14em}
+.lede{font-size:19px;color:var(--muted);max-width:36em;margin:16px 0 0}
+.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:8px 0}
+.nav{--hover-bg:#7fd3b6}
+.nav a{position:relative;display:block;text-decoration:none;background:var(--green);color:#fff;border-radius:8px;padding:22px 24px;
+ animation:navIn .9s cubic-bezier(.22,1,.36,1) backwards;
+ transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,background-color .3s ease,color .25s ease}
+.nav a:nth-child(1){animation-delay:.05s}
+.nav a:nth-child(2){animation-delay:.17s}
+.nav a:nth-child(3){animation-delay:.29s}
+.nav a:nth-child(4){animation-delay:.41s}
+@keyframes navIn{from{opacity:0;transform:translateY(46px) scale(.96)}to{opacity:1;transform:none}}
+:root[data-theme="dark"] .nav a{color:#08201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .nav a{color:#08201a}}
+/* :root prefix lifts specificity so black wins over the dark-mode text colour */
+:root .nav a:hover,:root .nav a:focus-visible{transform:translateY(-6px) scale(1.05);z-index:1;background:var(--hover-bg);color:#000;box-shadow:0 14px 28px rgba(15,91,74,.28)}
+.nav a:active{transform:translateY(-2px) scale(1.02);transition-duration:.12s}
+.nav a:hover span,.nav a:focus-visible span{opacity:1}
+@media(prefers-reduced-motion:reduce){.nav a{animation:none;transition:background-color .2s,color .2s}:root .nav a:hover,:root .nav a:focus-visible{transform:none}}
+.nav h2{font-size:24px;margin-bottom:6px}
+.nav span{font-size:15.5px;opacity:.92;transition:opacity .25s ease}
+section{padding:36px 0 8px}
+h3{font-size:22px;font-weight:700;margin-bottom:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.tile strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:34px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile p{margin:6px 0 0;font-size:15px}
+.tile small{display:block;margin-top:6px;color:var(--muted);font-size:13px}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.chart h4{font:600 16px/1.3 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.chart .src{font-size:13px;color:var(--muted);margin:0 0 14px}
+.b{margin-bottom:12px}
+.b .l{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;margin-bottom:3px}
+.b .l span:last-child{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.track{height:14px;background:var(--soft);border-radius:3px;overflow:hidden}
+.fill{height:100%;background:var(--grey)}
+.fill.hi{background:var(--green)}
+.fill.warn,.fill.near{background:var(--red)}
+.key{display:flex;gap:14px;font-size:13px;color:var(--muted);margin:0 0 12px}
+.key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+footer p{max-width:46em;margin:0 0 8px}
+@media(max-width:600px){.wrap{padding:0 16px}header{padding-top:32px}.nav{grid-template-columns:1fr}}
+
+/* back-to-top button */
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:48px;height:48px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:var(--green);color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(15,91,74,.3);
+ opacity:0;visibility:hidden;transform:translateY(18px) scale(.8);
+ transition:opacity .35s ease,transform .4s cubic-bezier(.34,1.56,.64,1),visibility 0s linear .4s,background-color .3s ease,color .25s ease,box-shadow .3s ease}
+.totop.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+:root[data-theme="dark"] .totop{color:#08201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .totop{color:#08201a}}
+.totop svg{width:22px;height:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+:root .totop.show:hover,:root .totop.show:focus-visible{background:#7fd3b6;color:#000;transform:translateY(-4px) scale(1.1);box-shadow:0 12px 24px rgba(15,91,74,.35)}
+.totop.show:hover svg,.totop.show:focus-visible svg{transform:translateY(-3px)}
+.totop.show:active{transform:scale(.94);transition-duration:.1s}
+.totop:focus-visible{outline:3px solid #c98a00;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.totop,.totop svg{transition:opacity .2s,background-color .2s,color .2s}:root .totop.show:hover,:root .totop.show:focus-visible{transform:none}.totop.show:hover svg,.totop.show:focus-visible svg{transform:none}}
+
+/* page transitions */
+body{animation:pageIn .4s ease backwards;transition:opacity .22s ease}
+body.leaving{opacity:0}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){body{animation:none;transition:none}}
+
+/* scroll-in effects */
+.fill{transform-origin:left center;transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+.js .fill{transform:scaleX(0)}
+.js .chart.in .fill{transform:scaleX(1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.js .fill{transform:none;transition:none}}
+</style>
+<script>document.documentElement.className+=" js"</script>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Waste2Value: economic impacts of solid waste management in India</h1>
+<p class="lede">A project on what mismanaged waste costs, and how a small segregation-based recovery business could turn it into value. Start with any page below.</p>
+</header>
+
+<nav class="nav" aria-label="Project pages">
+<a href="report.html"><h2>1. About the report</h2><span>What the report asks, its seven parts, what it found and where it is cautious.</span></a>
+<a href="Waste2Value_ how a one-tonne-a-day recovery business works.html"><h2>2. The business model</h2><span>Who pays, where the money goes, what could break the plan and how it could roll out.</span></a>
+<a href="calculator.html"><h2>3. Surplus calculator</h2><span>Move households, recycling price and wages, and watch the monthly surplus change.</span></a>
+<a href="https://www.instagram.com/waste2value.in/" target="_blank" rel="noopener noreferrer"><h2>4. Instagram ↗</h2><span>Follow Waste2Value for updates and project highlights.</span></a>
+</nav>
+
+<section>
+<h3>The problem in six numbers</h3>
+<div class="tiles">
+<div class="tile"><strong>1,61,390</strong><p>tonnes of municipal solid waste generated every day</p><small>Down To Earth dashboard, May 2026</small></div>
+<div class="tile"><strong>30% to 35%</strong><p>of waste is segregated at source nationally</p><small>National estimates cited in the report</small></div>
+<div class="tile"><strong>270.2 MT</strong><p>of legacy waste reported, with 65.77% remediated</p><small>SBM-Urban 2.0 dashboard via Down To Earth, accessed 18 May 2026</small></div>
+<div class="tile"><strong>63.1%</strong><p>of Delhi's waste processed in 2024-25</p><small>DPCC annual report 2024-25 via IMPRI India. CPCB's filing to the NGT cites the same report with 64.2%</small></div>
+<div class="tile"><strong>2.3 times</strong><p>as much respiratory illness near a Mumbai dumpsite (23% against 10%)</p><small>Clinical Epidemiology and Global Health, 2021</small></div>
+<div class="tile"><strong>₹40,000</strong><p>monthly surplus in the one-tonne-a-day pilot plan</p><small>Illustrative assumption, not a market quote</small></div>
+</div>
+</section>
+
+<section>
+<h3>Three charts from the report</h3>
+<div class="charts">
+<div class="chart">
+<h4>Delhi left 4,241 of 11,500 tonnes a day unprocessed</h4>
+<p class="src">Tonnes per day, 2024-25</p>
+<div class="b"><div class="l"><span>Generated</span><span>11,500</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="b"><div class="l"><span>Processed</span><span>7,259</span></div><div class="track"><div class="fill" style="width:63.1%"></div></div></div>
+<div class="b"><div class="l"><span>Not processed</span><span>4,241 (36.9%)</span></div><div class="track"><div class="fill warn" style="width:36.9%"></div></div></div>
+<p class="src" style="margin:12px 0 0">Source: DPCC annual report 2024-25 via IMPRI India. CPCB's filing to the NGT cites the same report with 11,852 generated and 7,611 processed (64.2%). Both versions give 4,241 unprocessed.</p>
+</div>
+
+<div class="chart">
+<h4>Illness was more common near a Mumbai dumpsite</h4>
+<p class="src">Share of residents affected, 200 per group</p>
+<div class="key"><span><i style="background:var(--red)"></i>Near dumpsite</span><span><i style="background:var(--grey)"></i>Distant</span></div>
+<div class="b"><div class="l"><span>Respiratory illness</span><span>23% vs 10%</span></div><div class="track"><div class="fill near" style="width:76.7%"></div></div><div class="track" style="margin-top:3px"><div class="fill" style="width:33.3%"></div></div></div>
+<div class="b"><div class="l"><span>Eye irritation</span><span>20% vs 9.5%</span></div><div class="track"><div class="fill near" style="width:66.7%"></div></div><div class="track" style="margin-top:3px"><div class="fill" style="width:31.7%"></div></div></div>
+<div class="b"><div class="l"><span>Stomach problems</span><span>27% vs 20%</span></div><div class="track"><div class="fill near" style="width:90%"></div></div><div class="track" style="margin-top:3px"><div class="fill" style="width:66.7%"></div></div></div>
+</div>
+
+<div class="chart">
+<h4>The pilot's surplus is about 22% of revenue</h4>
+<p class="src">Rupees per month, illustrative</p>
+<div class="b"><div class="l"><span>Revenue</span><span>₹1,82,000</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="b"><div class="l"><span>Running cost</span><span>₹1,42,000</span></div><div class="track"><div class="fill" style="width:78%"></div></div></div>
+<div class="b"><div class="l"><span>Surplus</span><span>₹40,000</span></div><div class="track"><div class="fill hi" style="width:22%"></div></div></div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>Figures come from MoHUA, CPCB, Down To Earth, DPCC and published studies cited in the full report. The business model figures are academic planning assumptions.</p>
+</footer>
+</div>
+<button type="button" class="totop" id="totop" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(function(){
+var b=document.getElementById('totop');
+function t(){b.classList.toggle('show',(window.pageYOffset||document.documentElement.scrollTop)>320)}
+window.addEventListener('scroll',t,{passive:true});t();
+b.addEventListener('click',function(){
+var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.scrollTo({top:0,behavior:rm?'auto':'smooth'});
+});
+})();
+</script>
+<script>
+(function(){
+window.addEventListener('pageshow',function(e){if(e.persisted)document.body.classList.remove('leaving')});
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.addEventListener('click',function(e){
+if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+if((a.target&&a.target!=='_self')||a.hasAttribute('download'))return;
+var h=a.getAttribute('href');
+if(!h||h.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(h))return;
+if(a.protocol!==location.protocol||a.host!==location.host)return;
+if(a.pathname===location.pathname&&a.search===location.search)return;
+e.preventDefault();
+document.body.classList.add('leaving');
+setTimeout(function(){location.href=a.href},200);
+setTimeout(function(){document.body.classList.remove('leaving')},2000);
+});
+})();
+</script>
+<script>
+(function(){
+var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var io=('IntersectionObserver' in window)&&!rm;
+var charts=[].slice.call(document.querySelectorAll('.chart'));
+if(!io){charts.forEach(function(c){c.classList.add('in')});return}
+
+/* bars: grow one after another inside each chart */
+charts.forEach(function(c){
+[].slice.call(c.querySelectorAll('.fill')).forEach(function(f,i){f.style.transitionDelay=(i*0.16)+'s'});
+});
+var cio=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');cio.unobserve(e.target)}});
+},{threshold:.3});
+charts.forEach(function(c){cio.observe(c)});
+
+/* big numbers: count up */
+var re=/\d[\d,]*(?:\.\d+)?/g;
+function fmt(tok,v){
+var d=(tok.split('.')[1]||'').length;
+return tok.indexOf(',')>-1?v.toLocaleString('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d}):v.toFixed(d);
+}
+function build(orig,p){return orig.replace(re,function(m){return fmt(m,parseFloat(m.replace(/,/g,''))*p)})}
+var nums=[].slice.call(document.querySelectorAll('.tile strong')).map(function(el){
+var orig=el.textContent.trim();
+el.innerHTML='<span aria-hidden="true"></span><span class="sr"></span>';
+el.lastChild.textContent=orig;
+el.firstChild.textContent=build(orig,0);
+return {el:el,out:el.firstChild,orig:orig};
+});
+function run(n,delay){
+setTimeout(function(){
+var t0=null,dur=1500;
+function step(ts){
+if(t0===null)t0=ts;
+var x=Math.min((ts-t0)/dur,1),p=1-Math.pow(1-x,3);
+n.out.textContent=x<1?build(n.orig,p):n.orig;
+if(x<1)requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+},delay);
+}
+var nio=new IntersectionObserver(function(es){
+var k=0;
+es.forEach(function(e){
+if(!e.isIntersecting)return;
+nio.unobserve(e.target);
+var n=nums.filter(function(x){return x.el===e.target})[0];
+run(n,k++*90);
+});
+},{threshold:.5});
+nums.forEach(function(n){nio.observe(n.el)});
+})();
+</script>
+</body>
+</html>

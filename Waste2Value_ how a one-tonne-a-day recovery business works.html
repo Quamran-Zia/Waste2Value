@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Waste2Value: how a one-tonne-a-day recovery business works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f1;--panel:#ffffff;--ink:#14201d;--muted:#52615c;--line:#cfdad6;--green:#0f5b4a;--green2:#3f9b7f;--amber:#c98a00;--red:#b3402f;--soft:#dcebe5;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1816;--panel:#16231f;--ink:#e7f0ec;--muted:#9fb3ac;--line:#2b3d37;--green:#58c0a0;--green2:#2f8a70;--amber:#e3ac2c;--red:#e5806f;--soft:#1d332c}}
+:root[data-theme="dark"]{--bg:#0e1816;--panel:#16231f;--ink:#e7f0ec;--muted:#9fb3ac;--line:#2b3d37;--green:#58c0a0;--green2:#2f8a70;--amber:#e3ac2c;--red:#e5806f;--soft:#1d332c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;line-height:1.12;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.hero{padding:56px 0 36px}
+h1{font-size:clamp(34px,6.4vw,58px);font-weight:700;letter-spacing:-.02em;max-width:15em}
+.lede{font-size:19px;color:var(--muted);max-width:36em;margin:18px 0 0}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(25px,4vw,34px);font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
+h3{font-size:19px;font-weight:700;margin:22px 0 6px}
+p{margin:0 0 12px;max-width:40em}
+.note{font-size:14px;color:var(--muted)}
+.bar{display:flex;height:64px;border-radius:6px;overflow:hidden;margin:26px 0 10px;border:1px solid var(--line)}
+.bar div{display:flex;align-items:center;padding:0 12px;font-weight:600;font-size:15px;color:#fff;white-space:nowrap;overflow:hidden}
+.k1{background:var(--green)}.k2{background:var(--green2)}.k3{background:#8a9894}
+.legend{display:grid;gap:8px;font-size:15px;margin:0;padding:0;list-style:none}
+.legend b{font-weight:600}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--soft)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin:20px 0;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.steps div{padding:16px;border-right:1px solid var(--line)}
+.steps div:last-child{border-right:0}
+.steps b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:18px;margin-bottom:4px}
+.steps span{font-size:14.5px;color:var(--muted)}
+@media(max-width:620px){.steps div{border-right:0;border-bottom:1px solid var(--line)}.steps div:last-child{border-bottom:0}}
+.risk{display:grid;gap:10px;margin:14px 0;padding:0;list-style:none}
+.risk li{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:6px;padding:12px 16px}
+.phase{display:grid;gap:0;margin:16px 0;border-left:3px solid var(--green2);padding-left:18px}
+.phase div{padding-bottom:16px}.phase b{display:block}
+footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer p{max-width:48em}
+
+/* project page navigation (compact version of the dashboard buttons) */
+.pnav{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px;--hover-bg:#7fd3b6}
+.pnav a{display:inline-block;text-decoration:none;font:600 15px/1.2 "IBM Plex Sans",system-ui,sans-serif;background:var(--green);color:#fff;border-radius:8px;padding:10px 16px;
+ animation:pnavIn .8s cubic-bezier(.22,1,.36,1) backwards;
+ transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,background-color .3s ease,color .25s ease}
+.pnav a:nth-child(1){animation-delay:.05s}
+.pnav a:nth-child(2){animation-delay:.15s}
+.pnav a:nth-child(3){animation-delay:.25s}
+.pnav a:nth-child(4){animation-delay:.35s}
+@keyframes pnavIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+:root[data-theme="dark"] .pnav a{color:#08201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .pnav a{color:#08201a}}
+:root .pnav a[aria-current="page"]{background:var(--soft);color:var(--ink);box-shadow:inset 0 0 0 2px var(--green)}
+:root .pnav a:hover,:root .pnav a:focus-visible{transform:translateY(-3px) scale(1.07);background:var(--hover-bg);color:#000;box-shadow:0 8px 18px rgba(15,91,74,.3)}
+:root .pnav a:active{transform:translateY(-1px) scale(1.02);transition-duration:.12s}
+.pnav a:focus-visible{outline:3px solid #c98a00;outline-offset:3px}
+.pback{display:inline-flex;align-items:center;gap:10px;margin:2px 0;padding:9px 20px 9px 15px;border-radius:999px;border:2px solid var(--green);background:var(--soft);font-weight:700;font-size:16px;text-decoration:none;color:var(--green);
+ animation:pbackIn .7s cubic-bezier(.22,1,.36,1) backwards,pbackPulse 1.8s ease-out 1.6s 2;
+ transition:background-color .3s ease,color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.pback .arr{display:inline-block;font-size:18px;line-height:1;transition:transform .35s cubic-bezier(.34,1.56,.64,1);animation:arrNudge 1.1s ease .9s 1}
+.pback:hover,.pback:focus-visible{background:var(--green);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,91,74,.3)}
+:root[data-theme="dark"] .pback:hover,:root[data-theme="dark"] .pback:focus-visible{color:#08201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .pback:hover,:root:not([data-theme="light"]) .pback:focus-visible{color:#08201a}}
+.pback:hover .arr,.pback:focus-visible .arr{transform:translateX(-7px)}
+.pback:active{transform:scale(.96);transition-duration:.1s}
+.pback:focus-visible{outline:3px solid #c98a00;outline-offset:3px}
+@keyframes pbackIn{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+@keyframes pbackPulse{0%{box-shadow:0 0 0 0 rgba(63,155,127,.55)}100%{box-shadow:0 0 0 14px rgba(63,155,127,0)}}
+@keyframes arrNudge{0%,100%{transform:translateX(0)}35%{transform:translateX(-6px)}65%{transform:translateX(-2px)}}
+@media(prefers-reduced-motion:reduce){.pback,.pback .arr{animation:none}.pback:hover .arr,.pback:focus-visible .arr{transform:none}}
+@media(prefers-reduced-motion:reduce){.pnav a{animation:none;transition:background-color .2s,color .2s}:root .pnav a:hover,:root .pnav a:focus-visible{transform:none}}
+.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
+.inl:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* back-to-top button */
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:48px;height:48px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:var(--green);color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(15,91,74,.3);
+ opacity:0;visibility:hidden;transform:translateY(18px) scale(.8);
+ transition:opacity .35s ease,transform .4s cubic-bezier(.34,1.56,.64,1),visibility 0s linear .4s,background-color .3s ease,color .25s ease,box-shadow .3s ease}
+.totop.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+:root[data-theme="dark"] .totop{color:#08201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .totop{color:#08201a}}
+.totop svg{width:22px;height:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+:root .totop.show:hover,:root .totop.show:focus-visible{background:#7fd3b6;color:#000;transform:translateY(-4px) scale(1.1);box-shadow:0 12px 24px rgba(15,91,74,.35)}
+.totop.show:hover svg,.totop.show:focus-visible svg{transform:translateY(-3px)}
+.totop.show:active{transform:scale(.94);transition-duration:.1s}
+.totop:focus-visible{outline:3px solid #c98a00;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.totop,.totop svg{transition:opacity .2s,background-color .2s,color .2s}:root .totop.show:hover,:root .totop.show:focus-visible{transform:none}.totop.show:hover svg,.totop.show:focus-visible svg{transform:none}}
+
+/* page transitions */
+body{animation:pageIn .4s ease backwards;transition:opacity .22s ease}
+body.leaving{opacity:0}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){body{animation:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<a class="pback" href="index.html"><span class="arr" aria-hidden="true">←</span><span class="lbl">Back to dashboard</span></a>
+<nav class="pnav" aria-label="Project pages">
+<a href="report.html">1. About the report</a>
+<a href="Waste2Value_ how a one-tonne-a-day recovery business works.html" aria-current="page">2. The business model</a>
+<a href="calculator.html">3. Surplus calculator</a>
+<a href="https://www.instagram.com/waste2value.in/" target="_blank" rel="noopener noreferrer">4. Instagram ↗</a>
+</nav>
+<h1>Waste2Value: how one tonne of household waste a day can pay for itself</h1>
+<p class="lede">A doorstep service that collects segregated waste, sorts the dry part for resale and composts the wet part. This page explains the business model: who pays, where the money goes and what could break it.</p>
+<div class="bar" role="img" aria-label="Monthly 26 tonnes: about 10 tonnes recyclables, about 8 tonnes composted, about 8 tonnes residual">
+<div class="k1" style="width:38.5%">10 t</div><div class="k2" style="width:30.8%">8 t</div><div class="k3" style="width:30.7%">8 t</div></div>
+<ul class="legend">
+<li><b>10 tonnes of dry recyclables</b> sorted and sold to authorised recyclers</li>
+<li><b>About 8 tonnes of wet waste</b> composted into roughly 3 tonnes of compost</li>
+<li><b>About 8 tonnes of residual waste</b> sent to authorised disposal</li>
+</ul>
+<p class="note" style="margin-top:12px">One month at the pilot scale of about 1 tonne a day over 26 days (26 tonnes). The split is a planning assumption that adds up to the 70% diversion target (18 of 26 tonnes kept out of disposal). The 10 tonnes of dry recyclables (38%) assumes well-segregated waste from subscribing households and institutions, which should hold more clean dry material than mixed municipal waste. Commonly cited municipal figures are lower, about 20% to 25%, so the pilot's first task is a waste audit to measure the real share.</p>
+</header>
+
+<section>
+<h2>How the service works</h2>
+<p>The business is a chain. Each link has to work, or the one after it loses value.</p>
+<div class="steps">
+<div><b>Segregate</b><span>Customers split waste across four colour-coded bins: green for wet, blue for dry recyclables, red for sanitary and black for special-care (domestic hazardous) waste.</span></div>
+<div><b>Collect</b><span>Trained workers with protective gear collect on fixed routes by cart or e-rickshaw.</span></div>
+<div><b>Sort</b><span>Dry waste goes to a small material recovery facility (MRF) for grading and baling.</span></div>
+<div><b>Recycle or compost</b><span>Recyclables go to recyclers, wet waste to compost, residuals to authorised disposal.</span></div>
+</div>
+<p>Customers are households, housing societies, colleges, shops and offices. Segregation at the source is the lever that matters most: clean paper and plastic sell for more, and wet waste that stays out of the dry bin can be composted.</p>
+</section>
+
+<section>
+<h2>Who pays: five revenue streams</h2>
+<p>No single income carries the business. Subscriptions and contracts cover the collection round, while material and compost sales add what sorting produces.</p>
+<div class="tw"><table>
+<thead><tr><th>Stream</th><th>Assumption</th><th class="n">Per month (₹)</th></tr></thead>
+<tbody>
+<tr><td>Household subscriptions</td><td>500 households at ₹80</td><td class="n">40,000</td></tr>
+<tr><td>Institutional and commercial contracts</td><td>10 contracts at ₹4,000</td><td class="n">40,000</td></tr>
+<tr><td>Recyclables</td><td>About 10 tonnes at ₹8 per kg</td><td class="n">80,000</td></tr>
+<tr><td>Compost</td><td>About 3 tonnes at ₹4 per kg</td><td class="n">12,000</td></tr>
+<tr><td>Training and audits</td><td>Awareness sessions, waste audits, events</td><td class="n">10,000</td></tr>
+<tr class="tot"><td>Total revenue</td><td></td><td class="n">1,82,000</td></tr>
+</tbody></table></div>
+<p class="note">Recyclables bring in 44% of revenue, so resale prices matter more than any other single number.</p>
+<p class="note">For comparison, Down To Earth and Stanford Social Innovation Review report doorstep collection fees in Pune's SWaCH cooperative of about ₹10 to ₹70 a month, depending on the area and the year. The ₹80 household fee is therefore at the upper end of published figures and needs to be tested with local households.</p>
+</section>
+
+<section>
+<h2>Where the money goes</h2>
+<div class="tw"><table>
+<thead><tr><th>Cost</th><th class="n">Per month (₹)</th></tr></thead>
+<tbody>
+<tr><td>Wages for a 5-person crew (4 collection and sorting crew and 1 supervisor)</td><td class="n">75,000</td></tr>
+<tr><td>Fuel and transport</td><td class="n">22,000</td></tr>
+<tr><td>Rent, storage and MRF operating costs</td><td class="n">15,000</td></tr>
+<tr><td>Sorting equipment, electricity, consumables</td><td class="n">10,000</td></tr>
+<tr><td>Safety gear and uniforms</td><td class="n">5,000</td></tr>
+<tr><td>Administration and marketing</td><td class="n">8,000</td></tr>
+<tr><td>Contingency</td><td class="n">7,000</td></tr>
+<tr class="tot"><td>Total running cost</td><td class="n">1,42,000</td></tr>
+<tr class="tot"><td>Operating surplus (revenue minus cost)</td><td class="n">40,000</td></tr>
+</tbody></table></div>
+<p>The surplus is about 22% of revenue. Wages are 53% of costs, which is typical for a collection service where most of the work is done by hand.</p>
+<p class="note">All figures are illustrative planning assumptions, not market quotations. Real prices vary by material, quality, place and buyer, and start-up capital (carts, sorting tables, scale, composting area, software) is not included.</p>
+<p class="note">The wage line assumes a five-person crew averaging about ₹15,000 a month each. State minimum wage notifications for unskilled work currently run from roughly ₹11,000 to ₹20,000 a month depending on the state, so this sits near the middle of that range. It excludes employer contributions such as provident fund and insurance, which may apply depending on the size of the business, and whether five people can handle one tonne a day is something the pilot has to test.</p>
+</section>
+
+<section>
+<h2>Try the numbers</h2>
+<p>The surplus above is one base case. The surplus calculator lets you change the number of subscribing households, the recyclable price and the wage bill, and see the monthly surplus update.</p>
+<p><a class="inl" href="calculator.html">Open the surplus calculator</a></p>
+</section>
+
+<section>
+<h2>What could break the model</h2>
+<ul class="risk">
+<li><b>Resale prices fall.</b> At ₹6 per kg instead of ₹8, the surplus halves to ₹20,000.</li>
+<li><b>Recyclables share drops to municipal averages.</b> If dry recyclables are 20% to 25% of the 26 tonnes (5.2 to 6.5 tonnes) instead of 10, recyclable revenue falls by about ₹28,000 to ₹38,000. The surplus drops to about ₹12,000 at 25% and close to zero at 20%, before any extra compost income if the missing share turns out to be wet waste.</li>
+<li><b>Households do not sign up.</b> With 250 households instead of 500, the surplus also halves to ₹20,000. Both together bring it to zero.</li>
+<li><b>Wage levels vary by state.</b> The model assumes a five-person core team at about ₹15,000 a month each (₹75,000 in total), roughly the middle of the range of state minimums.<br>
+<b>Higher-wage cities</b> (minimum about ₹18,000 to ₹19,000): payroll rises to ₹90,000 to ₹95,000, and the surplus stays positive at ₹20,000 to ₹25,000.<br>
+<b>A larger team</b> (8 to 10 people, if the routes need it): payroll reaches ₹1.2 to ₹1.5 lakh a month. A bigger team would normally serve more households, so this needs to be matched by more subscribers, adjusted fee tiers or a municipal service fee. Otherwise the surplus turns negative.</li>
+<li><b>Contaminated waste.</b> If food waste ends up in the dry bin, paper and cardboard lose resale value, so segregation has to be easy and reliable.</li>
+</ul>
+<p>The pilot is designed to test exactly these points before any scale-up.</p>
+</section>
+
+<section>
+<h2>Rolling it out</h2>
+<div class="phase">
+<div><b>Months 0 to 3: pilot</b>One housing society, one college or office and one small market. Measure waste quantity and composition, and test routes, instructions and buyers.</div>
+<div><b>Months 4 to 9: stabilise</b>Add customers only when routes and sorting can handle them. Start monthly customer reports and negotiate longer recycler and institutional contracts.</div>
+<div><b>Months 10 to 24: scale</b>Add routes and MRF capacity once demand is shown. Explore bulk organic waste, repair and reuse, and authorised e-waste collection.</div>
+</div>
+<p>All the money figures on this page are planning assumptions. The first three months of the pilot exist to replace them with local evidence:</p>
+<ul class="legend">
+<li><b>Prices.</b> Written rate cards from local scrap dealers and authorised recyclers for graded plastics, cardboard and metals, to check the ₹8 per kg average.</li>
+<li><b>Household fee.</b> A short survey in the target housing societies to see whether ₹80 a month is acceptable or needs tiers.</li>
+<li><b>Compost.</b> Lab tests against the Fertiliser (Control) Order standards, and letters of intent from nurseries or resident welfare associations, to check the ₹4 per kg.</li>
+<li><b>Running costs.</b> Quotes for a shed lease, vehicles and fuel, to check the ₹67,000 of non-wage costs.</li>
+<li><b>Waste mix.</b> A waste audit to measure the real share of dry recyclables.</li>
+<li><b>Wages.</b> The current minimum wage notification for the state, and any employer contributions that apply.</li>
+</ul>
+<p>Track tonnes collected, segregation rate, contamination, cost per tonne, revenue per tonne, customer retention and worker incidents.</p>
+</section>
+
+<section>
+<h2>The starter kit that makes it work</h2>
+<p>Each household gets four colour-coded bins under the 2026 Solid Waste Management Rules: a green bin for wet waste, a blue bin for dry recyclables, a red bin for sanitary waste and a black bin for special-care waste, meaning domestic hazardous items such as batteries, bulbs and medicines. The black bin's contents are handed over for periodic authorised collection.</p>
+<p>Labels tell people the reason as well as the rule: clean dry recyclables keep their value, and sanitary waste wrapped in newspaper and marked with a red indicator protects the worker who collects it.</p>
+</section>
+
+<footer>
+<p>Why it matters: India generates about 1.6 lakh tonnes of municipal solid waste a day, and Indore's segregation-led system, Pune's waste-picker cooperative SWaCH and Delhi's low processing rate show what separates success from struggle. Figures come from MoHUA, CPCB, Down To Earth and city studies cited in the full project report, <em>Economic Impacts of Solid Waste Management in India: Challenges, Opportunities and the Waste2Value Model</em>.</p>
+<p>The business model figures are academic planning assumptions and should be replaced with local quotations before any real launch.</p>
+</footer>
+</div>
+<button type="button" class="totop" id="totop" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(function(){
+var b=document.getElementById('totop');
+function t(){b.classList.toggle('show',(window.pageYOffset||document.documentElement.scrollTop)>320)}
+window.addEventListener('scroll',t,{passive:true});t();
+b.addEventListener('click',function(){
+var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.scrollTo({top:0,behavior:rm?'auto':'smooth'});
+});
+})();
+</script>
+<script>
+(function(){
+window.addEventListener('pageshow',function(e){if(e.persisted)document.body.classList.remove('leaving')});
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.addEventListener('click',function(e){
+if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+if((a.target&&a.target!=='_self')||a.hasAttribute('download'))return;
+var h=a.getAttribute('href');
+if(!h||h.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(h))return;
+if(a.protocol!==location.protocol||a.host!==location.host)return;
+if(a.pathname===location.pathname&&a.search===location.search)return;
+e.preventDefault();
+document.body.classList.add('leaving');
+setTimeout(function(){location.href=a.href},200);
+setTimeout(function(){document.body.classList.remove('leaving')},2000);
+});
+})();
+</script>
+</body>
+</html>
